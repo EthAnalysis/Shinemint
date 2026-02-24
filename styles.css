@@ -831,3 +831,68 @@ button {
         gap: 1rem;
     }
 }
+
+/* ==========================================================================
+   Parametric Wire Background
+   ========================================================================== */
+:root {
+    --wire: rgba(110, 200, 210, .16);
+    --pulse: rgba(212, 169, 56, .62);
+    --node: rgba(212, 169, 56, .26);
+    --bgOpacity: .95;
+}
+
+#wire-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: var(--bgOpacity);
+    transform: translate3d(0, 0, 0);
+}
+
+.page-content {
+    position: relative;
+    z-index: 1;
+}
+
+#wire-bg .wire {
+    fill: none;
+    stroke: var(--wire);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+}
+
+#wire-bg .pulse {
+    fill: none;
+    stroke: var(--pulse);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 6 22;
+    opacity: 0;
+    vector-effect: non-scaling-stroke;
+}
+
+#wire-bg .node {
+    fill: var(--node);
+}
+
+#wire-bg.pulsing .pulse {
+    opacity: 1;
+    animation: flow var(--pulseDur, 2.2s) linear infinite;
+}
+
+@keyframes flow {
+    to {
+        stroke-dashoffset: -260;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #wire-bg.pulsing .pulse {
+        animation: none;
+        opacity: .5;
+    }
+}
