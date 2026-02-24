@@ -547,6 +547,19 @@ button {
     background: var(--c-border);
 }
 
+/* Image fade mask for Hero visual */
+.hero-image-fade {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    /* Feather edges by fading to transparent using radial gradient */
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    display: block;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: all var(--transition-base);
+}
+
 /* Testable Tech List */
 .testable-tech-list {
     display: flex;

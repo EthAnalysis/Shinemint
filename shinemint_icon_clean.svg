@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="83" height="112" viewBox="0 0 83 112" fill="none">
+<g stroke="#54c7d6" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M15,24 L15,40 L22,50" />
+  <path d="M41,13 L41,32" />
+  <path d="M67,22 L67,40 L60,50" />
+  <path d="M31,55 L41,42" />
+  <path d="M41,42 L51,55" />
+  <path d="M24,63 L24,80 L28,88" />
+  <path d="M58,63 L58,72 L60,72 L60,72" />
+  <path d="M35,92 L48,86 L52,84" />
+  <path d="M60,72 L58,63" />
+</g>
+<g fill="#54c7d6">
+  <circle cx="41" cy="42" r="3.1"/>
+  <circle cx="51" cy="55" r="2.6"/>
+  <circle cx="31" cy="55" r="2.6"/>
+</g>
+<g stroke="#54c7d6" stroke-width="3.2" stroke-linejoin="round">
+  <polygon points="21.24,19.60 15.00,23.20 8.76,19.60 8.76,12.40 15.00,8.80 21.24,12.40" fill="#d6a23a" stroke="#54c7d6"/>
+  <polygon points="46.37,10.10 41.00,13.20 35.63,10.10 35.63,3.90 41.00,0.80 46.37,3.90" fill="#54c7d6" stroke="#54c7d6"/>
+  <polygon points="72.72,19.30 67.00,22.60 61.28,19.30 61.28,12.70 67.00,9.40 72.72,12.70" fill="#54c7d6" stroke="#54c7d6"/>
+  <polygon points="30.93,59.00 24.00,63.00 17.07,59.00 17.07,51.00 24.00,47.00 30.93,51.00" fill="none"/>
+  <polygon points="64.93,59.00 58.00,63.00 51.07,59.00 51.07,51.00 58.00,47.00 64.93,51.00" fill="none"/>
+  <polygon points="34.75,99.90 28.00,103.80 21.25,99.90 21.25,92.10 28.00,88.20 34.75,92.10" fill="#54c7d6" stroke="#54c7d6"/>
+  <polygon points="67.10,84.10 60.00,88.20 52.90,84.10 52.90,75.90 60.00,71.80 67.10,75.90" fill="none"/>
+</g>
+</svg>
