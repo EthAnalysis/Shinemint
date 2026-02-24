@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShineMint Labs - An Open Infrastructure Commons for Direct-Current Innovation">
+    <title>ShineMint Labs | Open Charter</title>
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="dark-theme">
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text">Shine<span class="accent">Mint</span> Labs</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#platform" class="nav-link">Platform</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#charter" class="nav-link">Open Charter</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-outline" onclick="document.getElementById('platform').scrollIntoView();">Propose
+                    Pod</button>
+                <button class="btn btn-primary" onclick="document.getElementById('charter').scrollIntoView();">Join
+                    Charter</button>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark/light mode">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#platform" class="mobile-nav-link">Platform</a></li>
+            <li><a href="#research" class="mobile-nav-link">Research</a></li>
+            <li><a href="#charter" class="mobile-nav-link">Open Charter</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+            <button class="btn btn-outline w-full"
+                onclick="document.getElementById('platform').scrollIntoView();">Propose Pod</button>
+            <button class="btn btn-primary w-full" onclick="document.getElementById('charter').scrollIntoView();">Join
+                Charter</button>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-bg-glow"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge fade-in-up">The Future of Energy & Autonomy</div>
+                    <h1 class="hero-title fade-in-up" style="animation-delay: 0.1s;">
+                        An Open Infrastructure <br> <span class="text-gradient">Commons</span> for Direct-Current
+                        Innovation
+                    </h1>
+                    <p class="hero-subtitle fade-in-up" style="animation-delay: 0.2s;">
+                        ShineMint Labs is a nonprofit research environment where solar, storage, robotics, and compute
+                        converge. Participants deploy modular systems powered by surplus renewable energy to explore the
+                        future of autonomous infrastructure.
+                    </p>
+                    <div class="hero-cta fade-in-up" style="animation-delay: 0.3s;">
+                        <button class="btn btn-primary btn-lg"
+                            onclick="document.getElementById('platform').scrollIntoView();">Propose a Research
+                            Pod</button>
+                        <button class="btn btn-outline btn-lg flex-center"
+                            onclick="document.getElementById('charter').scrollIntoView();">
+                            Read the Open Charter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Infrastructure Visual -->
+                <div class="hero-visual fade-in" style="animation-delay: 0.4s;">
+                    <div class="glass-card main-card">
+                        <div class="card-header">
+                            <div class="dots flex-between">
+                                <div style="display:flex; gap:6px;"><span></span><span></span><span></span></div>
+                                <span
+                                    style="font-size: 12px; color: var(--c-text-secondary); font-family: monospace;">NODE-ALPHA
+                                    // ONLINE</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-mockup" style="border-bottom:none; margin-bottom:1rem; height: 120px;">
+                                <!-- Representation of solar, battery, and compute -->
+                                <div class="bar" style="height: 40%; background: #eab308;" title="Solar Output"></div>
+                                <div class="bar" style="height: 80%; background: var(--c-accent-solid);"
+                                    title="BESS Level"></div>
+                                <div class="bar" style="height: 60%; background: #ef4444;" title="Compute Load"></div>
+                            </div>
+                            <div class="text-lines">
+                                <span
+                                    style="font-size: 12px; font-family: monospace; color: var(--c-text-secondary); display:block; margin-bottom: 4px;">SYSTEM
+                                    STATUS: EXPERIMENTAL</span>
+                                <div class="line w-full"></div>
+                                <div class="line w-3/4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What is ShineMint Labs -->
+        <section class="section" id="about">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="section-title">What is ShineMint Labs?</h2>
+                    <p class="section-desc">Not a traditional laboratory. A living research platform designed for
+                        experimentation at the intersection of energy and autonomy.</p>
+                </div>
+
+                <div class="glass-panel text-center" style="padding: 3rem; margin-top: 2rem;">
+                    <p
+                        style="font-size: 1.1rem; color: var(--c-text-secondary); margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        Adjacent to large renewable generation, the site enables real-world testing of advanced systems
+                        in open, harsh conditions.
+                    </p>
+                    <ul class="testable-tech-list">
+                        <li><span>⚡</span> Direct DC power utilization</li>
+                        <li><span>🔋</span> Long-duration storage</li>
+                        <li><span>🛡️</span> Autonomous security and maintenance</li>
+                        <li><span>🏗️</span> Standalone infrastructure</li>
+                        <li><span>🧠</span> AI and decentralized compute networks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- How the Platform Works -->
+        <section class="section" id="platform" style="background: rgba(var(--c-surface), 0.5);">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">How the <span class="accent">Platform</span> Works</h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card glass-panel reveal" style="transition-delay: 0s;">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Modular Deployment</h3>
+                        <p class="feature-desc">Participants bring containerized or modular systems to test new ideas in
+                            a controlled desert environment.</p>
+                    </div>
+
+                    <div class="feature-card glass-panel reveal" style="transition-delay: 0.1s;">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Shared Energy</h3>
+                        <p class="feature-desc">Surplus renewable energy that would otherwise be curtailed may power
+                            research and experimental infrastructure.</p>
+                    </div>
+
+                    <div class="feature-card glass-panel reveal" style="transition-delay: 0.2s;">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Open Collaboration</h3>
+                        <p class="feature-desc">Participants contribute to a shared knowledge ecosystem while
+                            maintaining independence over their specific projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Areas -->
+        <section class="section" id="research">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Research Areas</h2>
+                </div>
+                <div class="glass-panel" style="padding: 3rem;">
+                    <div class="research-grid">
+                        <div class="research-item">
+                            <div class="r-icon">🪫</div>
+                            <h4>Battery Energy Storage Systems (BESS)</h4>
+                        </div>
+                        <div class="research-item">
+                            <div class="r-icon">🤖</div>
+                            <h4>Autonomous Robotics & Security</h4>
+                        </div>
+                        <div class="research-item">
+                            <div class="r-icon">📡</div>
+                            <h4>Off-Grid Communications Infrastructure</h4>
+                        </div>
+                        <div class="research-item">
+                            <div class="r-icon">💻</div>
+                            <h4>Direct DC Compute & AI Processing</h4>
+                        </div>
+                        <div class="research-item">
+                            <div class="r-icon">🏗️</div>
+                            <h4>Self-Sufficient Facility Design</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Open Charter & Sustainability -->
+        <section class="section" id="charter" style="background: rgba(var(--c-surface), 0.5);">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">The Open Infrastructure <span class="accent">Charter</span></h2>
+                    <p class="section-desc">The philosophical backbone of the land. A shared commitment to compounding
+                        innovation.</p>
+                </div>
+
+                <div class="charter-layout">
+                    <!-- Core Principles -->
+                    <div class="charter-principles reveal">
+                        <h3>Core Principles</h3>
+                        <div class="principle-list">
+                            <div class="principle-item">
+                                <span class="p-num">1</span>
+                                <div>
+                                    <h4>Open Research First</h4>
+                                    <p>Share knowledge, operational lessons, and design insights so that innovation
+                                        compounds rather than isolates. Transparent experimentation and extensible
+                                        infrastructure.</p>
+                                </div>
+                            </div>
+                            <div class="principle-item">
+                                <span class="p-num">2</span>
+                                <div>
+                                    <h4>Modular Participation</h4>
+                                    <p>The Labs operates as a flexible platform. Deploy containerized research pods,
+                                        robotics, or DC compute environments. Each contributes to an evolving ecosystem.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="principle-item">
+                                <span class="p-num">3</span>
+                                <div>
+                                    <h4>Energy as a Commons</h4>
+                                    <p>When renewable generation exceeds grid demand, surplus direct-current energy may
+                                        be made available. Energy availability is experimental, variable, and
+                                        collaborative.</p>
+                                </div>
+                            </div>
+                            <div class="principle-item">
+                                <span class="p-num">4</span>
+                                <div>
+                                    <h4>Autonomy and Self-Sufficiency</h4>
+                                    <p>Encourage technologies that reduce the need for permanent human presence. The
+                                        long-term vision is a self-sustaining research ecosystem operating safely in
+                                        remote conditions.</p>
+                                </div>
+                            </div>
+                            <div class="principle-item">
+                                <span class="p-num">5</span>
+                                <div>
+                                    <h4>Respect for Independent Innovation</h4>
+                                    <p>While collaboration is encouraged, each participant retains ownership of their
+                                        equipment and IP. Projects coexist through physical separation and logical
+                                        isolation.</p>
+                                </div>
+                            </div>
+                            <div class="principle-item">
+                                <span class="p-num">6</span>
+                                <div>
+                                    <h4>Adaptive Evolution</h4>
+                                    <p>ShineMint Labs is intentionally unfinished. Focus areas evolve as new
+                                        technologies emerge, ensuring alignment with best-in-class innovation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="charter-sidebar reveal" style="transition-delay: 0.2s;">
+                        <div class="glass-panel info-box">
+                            <h3 style="color: var(--c-accent-solid);">Open Source Philosophy</h3>
+                            <p>The Labs is built on the idea that innovation accelerates when environments remain
+                                adaptable.</p>
+                            <p>Projects are encouraged to publish learnings, extend shared infrastructure, and
+                                contribute technologies that make the site more resilient and autonomous.</p>
+                        </div>
+
+                        <div class="glass-panel info-box" style="border-left-color: #f59e0b;">
+                            <h3 style="color: #f59e0b;">Sustainability Model</h3>
+                            <p>To support operations, ShineMint Labs may allocate surplus energy toward AI processing or
+                                digital infrastructure during periods of excess generation.</p>
+                            <p>These activities help offset operational costs while advancing research into efficient
+                                compute powered directly by renewable energy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-cta text-center reveal" style="margin-bottom: 4rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Deploy an Idea. Extend the Platform. Shape the
+                    Future of Energy.</h2>
+                <button class="btn btn-primary btn-lg">Propose a Project</button>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container flex-between">
+                <div class="logo">
+                    <span class="logo-text" style="font-size: 1.2rem;">Shine<span class="accent">Mint</span> Labs</span>
+                </div>
+                <p>&copy; 2026 ShineMint Labs Open Charter. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Github">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
