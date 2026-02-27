@@ -109,12 +109,34 @@
 
             try {
                 const formData = new FormData(contactForm);
-                const response = await fetch('contact.php', {
-                    method: 'POST',
-                    body: formData,
-                });
+                const turnstileToken = formData.get('cf-turnstile-response');
+                if (!turnstileToken) {
+                    throw new Error('Please complete the CAPTCHA challenge.');
+                }
+                const submitForm = async () => {
+                    const response = await fetch('contact.php', {
+                        method: 'POST',
+                        body: formData,
+                    });
+                    const responseText = await response.text();
+                    return { response, responseText };
+                };
 
-                const responseText = await response.text();
+                let { response, responseText } = await submitForm();
+
+                // HostGator/Imunify bot challenge sometimes returns HTTP 409 with a JS cookie setter.
+                if (
+                    response.status === 409 &&
+                    responseText.includes('document.cookie') &&
+                    responseText.includes('humans_')
+                ) {
+                    const cookieMatch = responseText.match(/document\\.cookie\\s*=\\s*"([^"]+)"/);
+                    if (cookieMatch && cookieMatch[1]) {
+                        document.cookie = cookieMatch[1];
+                        ({ response, responseText } = await submitForm());
+                    }
+                }
+
                 let result = null;
                 try {
                     result = responseText ? JSON.parse(responseText) : null;
@@ -266,4 +288,7 @@ function copyToClipboard(text, btnElement) {
         paths.forEach(p => p.setAttribute('d', originals.get(p)));
     }
 })();
+
+
+
 

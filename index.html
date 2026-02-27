@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -23,25 +23,25 @@
 <body class="dark-theme page-content">
     <svg id="wire-bg" aria-hidden="true" viewBox="0 0 1400 900" preserveAspectRatio="none">
         <g id="wires">
-            <!-- WIND → BUS -->
+            <!-- WIND â†’ BUS -->
             <path class="wire p" data-amp="7" d="M80,250 C220,240 260,300 380,300" />
             <path class="pulse p" data-amp="7" d="M80,250 C220,240 260,300 380,300" />
-            <!-- BUS → BESS -->
+            <!-- BUS â†’ BESS -->
             <path class="wire p" data-amp="8" d="M380,300 C520,300 560,380 680,380" />
             <path class="pulse p" data-amp="8" d="M380,300 C520,300 560,380 680,380" />
-            <!-- BESS → LOAD (top) -->
+            <!-- BESS â†’ LOAD (top) -->
             <path class="wire p" data-amp="9" d="M680,380 C820,380 900,340 1120,320" />
             <path class="pulse p" data-amp="9" d="M680,380 C820,380 900,340 1120,320" />
-            <!-- SOLAR → BUS -->
+            <!-- SOLAR â†’ BUS -->
             <path class="wire p" data-amp="8" d="M1320,520 C1180,500 1040,480 920,460" />
             <path class="pulse p" data-amp="8" d="M1320,520 C1180,500 1040,480 920,460" />
-            <!-- BUS → BESS (right bus into center) -->
+            <!-- BUS â†’ BESS (right bus into center) -->
             <path class="wire p" data-amp="9" d="M920,460 C820,440 760,420 680,380" />
             <path class="pulse p" data-amp="9" d="M920,460 C820,440 760,420 680,380" />
-            <!-- BESS → LOAD (bottom) -->
+            <!-- BESS â†’ LOAD (bottom) -->
             <path class="wire p" data-amp="10" d="M680,380 C820,380 940,420 1120,440" />
             <path class="pulse p" data-amp="10" d="M680,380 C820,380 940,420 1120,440" />
-            <!-- Subtle “institutional mesh” -->
+            <!-- Subtle â€œinstitutional meshâ€ -->
             <path class="wire p" data-amp="6" d="M380,300 C500,360 560,420 680,380" />
             <path class="wire p" data-amp="6" d="M920,460 C820,420 760,360 680,380" />
             <path class="wire p" data-amp="5" d="M520,260 C600,300 640,340 680,380" />
@@ -186,11 +186,11 @@
                         in open, harsh conditions.
                     </p>
                     <ul class="testable-tech-list">
-                        <li><span>⚡</span> Direct DC power utilization</li>
-                        <li><span>🔋</span> Long-duration storage</li>
-                        <li><span>🛡️</span> Autonomous security and maintenance</li>
-                        <li><span>🏗️</span> Standalone infrastructure</li>
-                        <li><span>🧠</span> AI and decentralized compute networks</li>
+                        <li><span>âš¡</span> Direct DC power utilization</li>
+                        <li><span>ðŸ”‹</span> Long-duration storage</li>
+                        <li><span>ðŸ›¡ï¸</span> Autonomous security and maintenance</li>
+                        <li><span>ðŸ—ï¸</span> Standalone infrastructure</li>
+                        <li><span>ðŸ§ </span> AI and decentralized compute networks</li>
                     </ul>
                 </div>
             </div>
@@ -261,23 +261,23 @@
                 <div class="glass-panel" style="padding: 3rem;">
                     <div class="research-grid">
                         <div class="research-item">
-                            <div class="r-icon">🪫</div>
+                            <div class="r-icon">ðŸª«</div>
                             <h4>Battery Energy Storage Systems (BESS)</h4>
                         </div>
                         <div class="research-item">
-                            <div class="r-icon">🤖</div>
+                            <div class="r-icon">ðŸ¤–</div>
                             <h4>Autonomous Robotics & Security</h4>
                         </div>
                         <div class="research-item">
-                            <div class="r-icon">📡</div>
+                            <div class="r-icon">ðŸ“¡</div>
                             <h4>Off-Grid Communications Infrastructure</h4>
                         </div>
                         <div class="research-item">
-                            <div class="r-icon">💻</div>
+                            <div class="r-icon">ðŸ’»</div>
                             <h4>Direct DC Compute & AI Processing</h4>
                         </div>
                         <div class="research-item">
-                            <div class="r-icon">🏗️</div>
+                            <div class="r-icon">ðŸ—ï¸</div>
                             <h4>Self-Sufficient Facility Design</h4>
                         </div>
                     </div>
@@ -398,8 +398,8 @@
                             <textarea id="message" name="message" rows="5" required
                                 placeholder="How can we collaborate?"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary w-full" id="contact-submit"
-                            style="margin-top: 1rem;">Send Message</button>
+                        <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-theme="auto" style="margin-top: 1rem;"></div>
+                        <button type="submit" class="btn btn-primary w-full" id="contact-submit" style="margin-top: 1rem;">Send Message</button>
                     </form>
                     <div id="contact-success" class="hidden text-center"
                         style="color: #10b981; margin-top: 1rem; font-weight: 500;">
@@ -441,6 +441,7 @@
         </div>
     </footer>
 
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="app.js"></script>
 </body>
 
