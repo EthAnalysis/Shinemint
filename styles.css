@@ -706,6 +706,50 @@ button {
     font-size: 0.95rem;
 }
 
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--c-text-primary);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--c-border);
+    background: transparent;
+    color: var(--c-text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--c-accent-solid);
+    box-shadow: 0 0 0 3px var(--c-accent-glow);
+}
+
+.dark-theme .form-group input,
+.dark-theme .form-group textarea {
+    background: rgba(0, 0, 0, 0.2);
+}
+
 /* Footer */
 .footer {
     border-top: 1px solid var(--c-border);

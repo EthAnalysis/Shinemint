@@ -94,6 +94,49 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => {
         revealObserver.observe(el);
     });
+
+    // --- Contact Form Handling (AJAX) ---
+    const contactForm = document.getElementById('contact-form');
+    const contactSuccess = document.getElementById('contact-success');
+    const contactSubmit = document.getElementById('contact-submit');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const originalText = contactSubmit.innerText;
+            contactSubmit.innerText = 'Sending...';
+            contactSubmit.disabled = true;
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch('contact.php', {
+                    method: 'POST',
+                    body: formData,
+                });
+                if (!response.ok) throw new Error('Network response was not ok');
+                const result = await response.json();
+                if (result.success) {
+                    contactForm.reset();
+                    // Show success message
+                    contactForm.classList.add('hidden');
+                    contactSuccess.classList.remove('hidden');
+                    // Hide after 5 seconds
+                    setTimeout(() => {
+                        contactSuccess.classList.add('hidden');
+                        contactForm.classList.remove('hidden');
+                    }, 5000);
+                } else {
+                    alert(result.message || 'Submission failed');
+                }
+            } catch (err) {
+                console.error('Form submission error:', err);
+                alert('There was an error submitting the form. Please try again later.');
+            } finally {
+                contactSubmit.innerText = originalText;
+                contactSubmit.disabled = false;
+            }
+        });
+    }
 });
 
 // --- Clipboard Copy functionality ---
