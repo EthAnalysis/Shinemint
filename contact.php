@@ -1,10 +1,9 @@
-<?php
-// contact.php - Simple backend for contact form submissions
+﻿<?php
+// contact.php - Backend for contact form submissions
 // Expected POST fields: name, email, message
 
 header('Content-Type: application/json');
 
-// Helper function to send JSON response
 function jsonResponse($success, $message = '')
 {
     echo json_encode(['success' => $success, 'message' => $message]);
@@ -12,77 +11,49 @@ function jsonResponse($success, $message = '')
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
     jsonResponse(false, 'Invalid request method.');
 }
 
-// Retrieve and sanitize inputs
 $name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $message = trim($_POST['message'] ?? '');
 
-if (empty($name) || empty($email) || empty($message)) {
+if ($name === '' || $email === '' || $message === '') {
+    http_response_code(400);
     jsonResponse(false, 'All fields are required.');
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
     jsonResponse(false, 'Invalid email address.');
 }
 
-// Prepare email (adjust the recipient as needed)
-$to = 'info@shinemint.com'; // Change to your desired recipient
-$subject = "New Shinemint rm submission from $name";
-$body = "Name: $name\nEmail: $email\n\nMessage:\n$message";
-$headers = "From: $email\r\nReply-To: $email\r\nX-Mailer: PHP/" . phpversion();
+// Prevent header injection in user-supplied fields.
+$safeName = str_replace(["\r", "\n"], ' ', $name);
+$safeEmail = str_replace(["\r", "\n"], '', $email);
 
-// Attempt to send email
-if (mail($to, $subject, $body, $headers)) {
+$to = 'info@shinemint.com';
+$subject = "New contact form submission from {$safeName}";
+$body = "Name: {$safeName}\nEmail: {$safeEmail}\n\nMessage:\n{$message}";
+
+// Use a domain-matching sender to avoid HostGator mail rejection.
+$fromAddress = 'noreply@shinemint.com';
+$headers = [
+    "From: ShineMint Contact <{$fromAddress}>",
+    "Reply-To: {$safeEmail}",
+    'X-Mailer: PHP/' . phpversion(),
+    'Content-Type: text/plain; charset=UTF-8'
+];
+
+$headersText = implode("\r\n", $headers);
+$mailSent = @mail($to, $subject, $body, $headersText, "-f {$fromAddress}");
+
+if ($mailSent) {
     jsonResponse(true, 'Message sent successfully.');
 }
-else {
-    jsonResponse(false, 'Failed to send email. Please try again later.');
-}
-?>
-<?php
-// contact.php - Simple backend for contact form submissions
-// Expected POST fields: name, email, message
 
-header('Content-Type: application/json');
-
-// Helper function to send JSON response
-function jsonResponse($success, $message = '')
-{
-    echo json_encode(['success' => $success, 'message' => $message]);
-    exit;
-}
-
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    jsonResponse(false, 'Invalid request method.');
-}
-
-// Retrieve and sanitize inputs
-$name = trim($_POST['name'] ?? '');
-$email = trim($_POST['email'] ?? '');
-$message = trim($_POST['message'] ?? '');
-
-if (empty($name) || empty($email) || empty($message)) {
-    jsonResponse(false, 'All fields are required.');
-}
-
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    jsonResponse(false, 'Invalid email address.');
-}
-
-// Prepare email (adjust the recipient as needed)
-$to = 'info@shinemint.com'; // Change to your desired recipient
-$subject = "New contact form submission from $name";
-$body = "Name: $name\nEmail: $email\n\nMessage:\n$message";
-$headers = "From: $email\r\nReply-To: $email\r\nX-Mailer: PHP/" . phpversion();
-
-// Attempt to send email
-if (mail($to, $subject, $body, $headers)) {
-    jsonResponse(true, 'Message sent successfully.');
-}
-else {
-    jsonResponse(false, 'Failed to send email. Please try again later.');
-}
+error_log("contact.php mail() failed for recipient {$to} from {$safeEmail}");
+http_response_code(500);
+jsonResponse(false, 'Failed to send email. Please try again later.');
 ?>
