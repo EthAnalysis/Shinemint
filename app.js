@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
 
     // --- Theme Toggle Functionality ---
     const themeBtn = document.getElementById('theme-toggle');
@@ -113,9 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     method: 'POST',
                     body: formData,
                 });
-                if (!response.ok) throw new Error('Network response was not ok');
-                const result = await response.json();
-                if (result.success) {
+
+                const responseText = await response.text();
+                let result = null;
+                try {
+                    result = responseText ? JSON.parse(responseText) : null;
+                } catch (parseErr) {
+                    console.warn('contact.php returned non-JSON:', responseText);
+                }
+
+                if (!response.ok) {
+                    const serverMessage = result?.message || responseText || `HTTP ${response.status}`;
+                    throw new Error(`HTTP ${response.status}: ${serverMessage}`);
+                }
+
+                if (result?.success) {
                     contactForm.reset();
                     // Show success message
                     contactForm.classList.add('hidden');
@@ -126,11 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         contactForm.classList.remove('hidden');
                     }, 5000);
                 } else {
-                    alert(result.message || 'Submission failed');
+                    alert(result?.message || 'Submission failed');
                 }
             } catch (err) {
                 console.error('Form submission error:', err);
-                alert('There was an error submitting the form. Please try again later.');
+                alert(`Form error: ${err.message}`);
             } finally {
                 contactSubmit.innerText = originalText;
                 contactSubmit.disabled = false;
@@ -254,3 +266,4 @@ function copyToClipboard(text, btnElement) {
         paths.forEach(p => p.setAttribute('d', originals.get(p)));
     }
 })();
+
