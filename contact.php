@@ -137,7 +137,7 @@ foreach ($toAddresses as $addr) {
 }
 
 $to = implode(',', $toAddresses);
-$subject = "New contact form submission from {$safeName}";
+$subject = "[ShineMint Contact] New message from {$safeName}";
 $body = "Name: {$safeName}\nEmail: {$safeEmail}\n\nMessage:\n{$message}";
 
 $fromAddress = 'info@shinemint.com';
