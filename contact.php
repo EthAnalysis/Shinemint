@@ -10,6 +10,15 @@ function jsonResponse($success, $message = '')
     exit;
 }
 
+function logContactEvent($event, $context = [])
+{
+    $timestamp = date('c');
+    $json = json_encode($context, JSON_UNESCAPED_SLASHES);
+    $line = "{$timestamp} {$event} {$json}\n";
+    @file_put_contents(__DIR__ . '/contact_debug.log', $line, FILE_APPEND | LOCK_EX);
+    error_log("contact.php {$event} {$json}");
+}
+
 function verifyTurnstile($secretKey, $token, $remoteIp)
 {
     $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
@@ -89,13 +98,14 @@ if ($turnstileToken === '') {
 $turnstileSecret = getenv('TURNSTILE_SECRET_KEY') ?: '';
 if ($turnstileSecret === '' || $turnstileSecret === 'YOUR_TURNSTILE_SECRET_KEY') {
     http_response_code(500);
+    logContactEvent('captcha_secret_missing');
     jsonResponse(false, 'Server CAPTCHA is not configured.');
 }
 
 $remoteIp = $_SERVER['REMOTE_ADDR'] ?? '';
 [$captchaOk, $captchaReason] = verifyTurnstile($turnstileSecret, $turnstileToken, $remoteIp);
 if (!$captchaOk) {
-    error_log('Turnstile failed: ' . $captchaReason);
+    logContactEvent('captcha_failed', ['reason' => $captchaReason, 'ip' => $remoteIp]);
     http_response_code(403);
     jsonResponse(false, 'CAPTCHA verification failed. Please try again.');
 }
@@ -104,7 +114,7 @@ if (!$captchaOk) {
 $safeName = str_replace(["\r", "\n"], ' ', $name);
 $safeEmail = str_replace(["\r", "\n"], '', $email);
 
-$to = 'info@shinemint.com';
+$to = getenv('CONTACT_TO_EMAIL') ?: 'info@shinemint.com';
 $subject = "New contact form submission from {$safeName}";
 $body = "Name: {$safeName}\nEmail: {$safeEmail}\n\nMessage:\n{$message}";
 
@@ -121,11 +131,17 @@ $headersText = implode("\r\n", $headers);
 $mailSent = @mail($to, $subject, $body, $headersText, "-f {$fromAddress}");
 
 if ($mailSent) {
-    error_log("contact.php mail() accepted for {$to} from {$safeEmail}");
+    logContactEvent('mail_accepted', ['to' => $to, 'from' => $fromAddress, 'reply_to' => $safeEmail]);
     jsonResponse(true, 'Message sent successfully.');
 }
 
-error_log("contact.php mail() failed for recipient {$to} from {$safeEmail}");
+$lastError = error_get_last();
+logContactEvent('mail_failed', [
+    'to' => $to,
+    'from' => $fromAddress,
+    'reply_to' => $safeEmail,
+    'error' => $lastError ? ($lastError['message'] ?? 'unknown') : 'none'
+]);
 http_response_code(500);
 jsonResponse(false, 'Failed to send email. Please try again later.');
 ?>
