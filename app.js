@@ -173,33 +173,6 @@
     }
 });
 
-// --- Clipboard Copy functionality ---
-function copyToClipboard(text, btnElement) {
-    navigator.clipboard.writeText(text).then(() => {
-        // Find existing text to restore later
-        const originalText = btnElement.innerText;
-        // Check if there's an SVG inside to preserve (like the outline button)
-        const hasSvg = btnElement.querySelector('svg') !== null;
-        let originalHTML = btnElement.innerHTML;
-
-        btnElement.innerText = 'Email Copied!';
-        btnElement.style.backgroundColor = '#10b981'; // Success green
-        btnElement.style.color = '#fff';
-        btnElement.style.borderColor = '#10b981';
-
-        setTimeout(() => {
-            btnElement.innerHTML = originalHTML; // restore including SVGs if any
-            btnElement.style.backgroundColor = '';
-            btnElement.style.color = '';
-            btnElement.style.borderColor = '';
-        }, 2000);
-    }).catch(err => {
-        console.error('Failed to copy text: ', err);
-        // Fallback or alert
-        alert("Please contact us at info@shinemint.com");
-    });
-}
-
 /* ==========================================================================
    Parametric Institutional Motion
    ========================================================================== */

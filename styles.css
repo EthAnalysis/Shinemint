@@ -581,6 +581,12 @@ button {
     box-shadow: var(--shadow-sm);
 }
 
+.icon-chip {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
 /* Features Grid */
 .features-grid {
     display: grid;
@@ -641,8 +647,15 @@ button {
 }
 
 .r-icon {
-    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 1rem;
+}
+
+.r-icon-img {
+    width: 40px;
+    height: 40px;
 }
 
 .research-item h4 {
@@ -748,6 +761,12 @@ button {
 .dark-theme .form-group input,
 .dark-theme .form-group textarea {
     background: rgba(0, 0, 0, 0.2);
+}
+
+.turnstile-wrap {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 /* Footer */

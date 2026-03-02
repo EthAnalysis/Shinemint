@@ -72,10 +72,7 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="btn btn-outline" onclick="copyToClipboard('info@shinemint.com', this)">Propose
-                    Pod</button>
-                <button class="btn btn-primary" onclick="copyToClipboard('info@shinemint.com', this)">Join
-                    Charter</button>
+                <a href="#contact" class="btn btn-primary">Collaborate With Us!</a>
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark/light mode">
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -117,10 +114,7 @@
             <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
         </ul>
         <div class="mobile-nav-actions">
-            <button class="btn btn-outline w-full" onclick="copyToClipboard('info@shinemint.com', this)">Propose
-                Pod</button>
-            <button class="btn btn-primary w-full" onclick="copyToClipboard('info@shinemint.com', this)">Join
-                Charter</button>
+            <a href="#contact" class="btn btn-primary w-full mobile-nav-link">Collaborate With Us!</a>
         </div>
     </div>
 
@@ -141,13 +135,7 @@
                         future of autonomous infrastructure.
                     </p>
                     <div class="hero-cta fade-in-up" style="animation-delay: 0.3s;">
-                        <button class="btn btn-primary btn-lg"
-                            onclick="copyToClipboard('info@shinemint.com', this)">Propose a Research
-                            Pod</button>
-                        <button class="btn btn-outline btn-lg flex-center"
-                            onclick="copyToClipboard('info@shinemint.com', this)">
-                            Join the Open Charter
-                        </button>
+                        <a href="#charter" class="btn btn-outline btn-lg flex-center">Join the Open Charter</a>
                     </div>
                 </div>
 
@@ -186,11 +174,11 @@
                         in open, harsh conditions.
                     </p>
                     <ul class="testable-tech-list">
-                        <li><span>âš¡</span> Direct DC power utilization</li>
-                        <li><span>ðŸ”‹</span> Long-duration storage</li>
-                        <li><span>ðŸ›¡ï¸</span> Autonomous security and maintenance</li>
-                        <li><span>ðŸ—ï¸</span> Standalone infrastructure</li>
-                        <li><span>ðŸ§ </span> AI and decentralized compute networks</li>
+                        <li><img src="assets/icons/bolt.svg" alt="" aria-hidden="true" class="icon-chip"> Direct DC power utilization</li>
+                        <li><img src="assets/icons/battery.svg" alt="" aria-hidden="true" class="icon-chip"> Long-duration storage</li>
+                        <li><img src="assets/icons/shield.svg" alt="" aria-hidden="true" class="icon-chip"> Autonomous security and maintenance</li>
+                        <li><img src="assets/icons/building.svg" alt="" aria-hidden="true" class="icon-chip"> Standalone infrastructure</li>
+                        <li><img src="assets/icons/cpu.svg" alt="" aria-hidden="true" class="icon-chip"> AI and decentralized compute networks</li>
                     </ul>
                 </div>
             </div>
@@ -261,23 +249,23 @@
                 <div class="glass-panel" style="padding: 3rem;">
                     <div class="research-grid">
                         <div class="research-item">
-                            <div class="r-icon">ðŸª«</div>
+                            <div class="r-icon"><img src="assets/icons/battery.svg" alt="" aria-hidden="true" class="r-icon-img"></div>
                             <h4>Battery Energy Storage Systems (BESS)</h4>
                         </div>
                         <div class="research-item">
-                            <div class="r-icon">ðŸ¤–</div>
+                            <div class="r-icon"><img src="assets/icons/robot.svg" alt="" aria-hidden="true" class="r-icon-img"></div>
                             <h4>Autonomous Robotics & Security</h4>
                         </div>
                         <div class="research-item">
-                            <div class="r-icon">ðŸ“¡</div>
+                            <div class="r-icon"><img src="assets/icons/antenna.svg" alt="" aria-hidden="true" class="r-icon-img"></div>
                             <h4>Off-Grid Communications Infrastructure</h4>
                         </div>
                         <div class="research-item">
-                            <div class="r-icon">ðŸ’»</div>
+                            <div class="r-icon"><img src="assets/icons/cpu.svg" alt="" aria-hidden="true" class="r-icon-img"></div>
                             <h4>Direct DC Compute & AI Processing</h4>
                         </div>
                         <div class="research-item">
-                            <div class="r-icon">ðŸ—ï¸</div>
+                            <div class="r-icon"><img src="assets/icons/building.svg" alt="" aria-hidden="true" class="r-icon-img"></div>
                             <h4>Self-Sufficient Facility Design</h4>
                         </div>
                     </div>
@@ -398,8 +386,9 @@
                             <textarea id="message" name="message" rows="5" required
                                 placeholder="How can we collaborate?"></textarea>
                         </div>
-                        <div class="cf-turnstile" data-sitekey="0x4AAAAAACk72dYQYEU2bpww" data-theme="auto"
-                            style="margin-top: 1rem;"></div>
+                        <div class="turnstile-wrap">
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAACk72dYQYEU2bpww" data-theme="auto"></div>
+                        </div>
                         <button type="submit" class="btn btn-primary w-full" id="contact-submit"
                             style="margin-top: 1rem;">Send Message</button>
                     </form>
@@ -418,8 +407,7 @@
             <div class="footer-cta text-center reveal" style="margin-bottom: 4rem;">
                 <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Deploy an Idea. Extend the Platform. Shape the
                     Future of Energy.</h2>
-                <button class="btn btn-primary btn-lg" onclick="copyToClipboard('info@shinemint.com', this)">Propose a
-                    Project</button>
+                <a href="#contact" class="btn btn-primary btn-lg">Propose a Project</a>
             </div>
         </div>
 
