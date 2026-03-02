@@ -130,10 +130,11 @@
                     responseText.includes('document.cookie') &&
                     responseText.includes('humans_')
                 ) {
-                    const cookieMatch = responseText.match(/document\\.cookie\\s*=\\s*"([^"]+)"/);
+                    const cookieMatch = responseText.match(/document\.cookie\s*=\s*["']([^"']+)["']/i);
                     if (cookieMatch && cookieMatch[1]) {
                         document.cookie = cookieMatch[1];
-                        ({ response, responseText } = await submitForm());
+                        window.location.reload();
+                        return;
                     }
                 }
 

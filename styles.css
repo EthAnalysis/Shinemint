@@ -582,9 +582,14 @@ button {
 }
 
 .icon-chip {
-    width: 20px;
-    height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 20px;
+    max-height: 20px;
     flex-shrink: 0;
+    object-fit: contain;
 }
 
 /* Features Grid */
@@ -654,8 +659,13 @@ button {
 }
 
 .r-icon-img {
-    width: 40px;
-    height: 40px;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: contain;
 }
 
 .research-item h4 {
@@ -766,7 +776,15 @@ button {
 .turnstile-wrap {
     margin-top: 1rem;
     display: flex;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.turnstile-wrap .cf-turnstile {
+    display: inline-block;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 /* Footer */
