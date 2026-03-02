@@ -779,11 +779,13 @@ button {
     align-items: center;
     justify-content: center;
     width: 100%;
+    overflow: hidden;
 }
 
 .turnstile-wrap .cf-turnstile {
     display: inline-block;
     margin: 0 auto;
+    width: 100%;
     max-width: 100%;
 }
 

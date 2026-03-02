@@ -133,8 +133,15 @@
                     const cookieMatch = responseText.match(/document\.cookie\s*=\s*["']([^"']+)["']/i);
                     if (cookieMatch && cookieMatch[1]) {
                         document.cookie = cookieMatch[1];
-                        window.location.reload();
-                        return;
+                        ({ response, responseText } = await submitForm());
+                        if (
+                            response.status === 409 &&
+                            responseText.includes('document.cookie') &&
+                            responseText.includes('humans_')
+                        ) {
+                            window.location.reload();
+                            return;
+                        }
                     }
                 }
 
@@ -155,6 +162,7 @@
                     // Show success message
                     contactForm.classList.add('hidden');
                     contactSuccess.classList.remove('hidden');
+                    contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     // Hide after 5 seconds
                     setTimeout(() => {
                         contactSuccess.classList.add('hidden');

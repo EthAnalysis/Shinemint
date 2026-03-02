@@ -108,10 +108,11 @@ $to = 'info@shinemint.com';
 $subject = "New contact form submission from {$safeName}";
 $body = "Name: {$safeName}\nEmail: {$safeEmail}\n\nMessage:\n{$message}";
 
-$fromAddress = 'noreply@shinemint.com';
+$fromAddress = 'info@shinemint.com';
 $headers = [
     "From: ShineMint Contact <{$fromAddress}>",
     "Reply-To: {$safeEmail}",
+    "Sender: {$fromAddress}",
     'X-Mailer: PHP/' . phpversion(),
     'Content-Type: text/plain; charset=UTF-8'
 ];
@@ -120,6 +121,7 @@ $headersText = implode("\r\n", $headers);
 $mailSent = @mail($to, $subject, $body, $headersText, "-f {$fromAddress}");
 
 if ($mailSent) {
+    error_log("contact.php mail() accepted for {$to} from {$safeEmail}");
     jsonResponse(true, 'Message sent successfully.');
 }
 
