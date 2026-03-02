@@ -114,7 +114,29 @@ if (!$captchaOk) {
 $safeName = str_replace(["\r", "\n"], ' ', $name);
 $safeEmail = str_replace(["\r", "\n"], '', $email);
 
-$to = getenv('CONTACT_TO_EMAIL') ?: 'info@shinemint.com';
+$toListRaw = getenv('CONTACT_TO_EMAILS') ?: getenv('CONTACT_TO_EMAIL') ?: '';
+if ($toListRaw === '') {
+    http_response_code(500);
+    logContactEvent('recipient_env_missing');
+    jsonResponse(false, 'Recipient email is not configured.');
+}
+
+$toAddresses = array_values(array_filter(array_map('trim', preg_split('/[,;]+/', $toListRaw))));
+if (empty($toAddresses)) {
+    http_response_code(500);
+    logContactEvent('recipient_env_invalid', ['raw' => $toListRaw]);
+    jsonResponse(false, 'Recipient email is not configured.');
+}
+
+foreach ($toAddresses as $addr) {
+    if (!filter_var($addr, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(500);
+        logContactEvent('recipient_env_invalid_email', ['address' => $addr]);
+        jsonResponse(false, 'Recipient email is not configured.');
+    }
+}
+
+$to = implode(',', $toAddresses);
 $subject = "New contact form submission from {$safeName}";
 $body = "Name: {$safeName}\nEmail: {$safeEmail}\n\nMessage:\n{$message}";
 
